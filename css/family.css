@@ -1,0 +1,91 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    margin: 0;
+    padding: 0;
+    background-color: #616161;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    margin: 0;
+    padding: 0.4em;
+    text-align: center;
+    color: #eee;
+    font-weight: 300;
+}
+
+#content {
+    padding: 1em;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.full-width {
+    width: 100%;
+}
+
+#emoji-content {
+    flex: 1;
+    
+}
+
+#family {
+    font-size: 20em;
+    color: #fff;
+    line-height: 0;
+}
+
+#emoji-breakdown {
+    font-size: 6em;
+    text-align: center;
+}
+
+.page-footer {
+    background-color: #616161;
+}
+
+.page-footer .footer-copyright {
+    background-color: #424242;
+}
+
+.emoji {
+    font-family: apple color emoji,segoe ui emoji,noto color emoji,android emoji,emojisymbols,emojione mozilla,twemoji mozilla,segoe ui symbol;
+}
+
+.skin-container {
+    display: flex;
+}
+
+.skin-tone {
+    font-size: 5em;
+}
+
+
+.person-type a {
+    text-indent: 100%;
+    font-size: 10em;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.person-type a:hover {
+    outline: 1px solid #ccc;
+    background-color: #eee;
+    padding: 0;
+}
+
+#sample-family {
+    width: 200px;
+    margin: 0 auto;
+    display: block;
+}

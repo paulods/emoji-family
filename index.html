@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Family Emoji</title>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="css/family.css" media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Family Emoji" />
+    <meta name="twitter:description" content="Create emoji zero-width joiner sequences for families of arbitrary size and skin tone combinations." />
+    <meta name="twitter:image" content="http://family-emoji.org/img/sample_family.png" />
+</head>
+
+<body>
+
+<header>
+    <h1>Family Emoji</h1>
+</header>
+
+<div id="content">
+    <div class="full-width row">
+        <div class="col s6">
+            <a class="btn" onclick='$("#modal-add-person").modal("open")'>
+                <i class="material-icons left">add</i>Add person
+            </a>
+            <!-- <a class="dropdown-button btn" href="#" data-activates="dropdown-add-person">
+                <i class="material-icons left">add</i>Add person
+            </a>
+             
+            <ul id='dropdown-add-person' class='dropdown-content'>
+                <li><a onclick="addPerson('woman')">Woman</a></li>
+                <li><a onclick="addPerson('man')">Man</a></li>
+                <li class="divider"></li>
+                <li><a onclick="addPerson('girl')">Girl</a></li>
+                <li><a onclick="addPerson('boy')">Boy</a></li>
+                <li><a onclick="addPerson('baby')">Baby</a></li>
+            </ul> -->
+        </div>
+        <div class="col s6 right-align">
+        </div>
+    </div>
+   
+        
+    <div id="emoji-content">
+        <p id="family" onclick="copyFamily();"></p>
+        <p id="emoji-breakdown"></p>
+    </div>
+  
+
+</div>
+
+<footer class="page-footer">
+    <div class="container white-text">
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="emoji" type="text" readonly>
+            </div>
+            <div class="input-field col s2">
+                <a class="btn"  onclick="copyFamily();">Copy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div id="modal-add-person" class="modal">
+    <div class="modal-content">
+        <h4>Add person</h4>
+
+        <h5>Skin tone</h5>
+        <div class="skin-container">
+            <a class="emoji skin-tone" href="#" onclick="setSkinTone(1); return false;">🏻</a>
+            <a class="emoji skin-tone" href="#" onclick="setSkinTone(2); return false;">🏼</a>
+            <a class="emoji skin-tone" href="#" onclick="setSkinTone(3); return false;">🏽</a>
+            <a class="emoji skin-tone" href="#" onclick="setSkinTone(4); return false;">🏾</a>
+            <a class="emoji skin-tone" href="#" onclick="setSkinTone(5); return false;">🏿</a>
+        </div>
+
+        <h5>Type</h5>
+        <div id="add-type-parents" class="person-type">
+            <a id="add-type-woman" href="#" onclick="addPerson('woman'); return false;">👩</a>
+            <a id="add-type-man" href="#" onclick="addPerson('man'); return false;">👨</a>
+        </div>
+        <div id="add-type-children" class="person-type" >
+            <a id="add-type-girl" href="#" onclick="addPerson('girl'); return false;">👧</a>
+            <a id="add-type-boy" href="#" onclick="addPerson('boy'); return false;">👦</a>
+            <a id="add-type-baby" href="#" onclick="addPerson('baby'); return false;">👶</a>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="modal-action modal-close waves-effect waves-red btn-flat" onclick="return false;">Cancel</a>
+        <!-- <a href="#" class="modal-action modal-close waves-effect waves-red btn-flat remove-person" onclick="removePerson(); return false;">Remove person</a> -->
+    </div>
+</div>
+
+<div id="modal-change-person" class="modal">
+    <div class="modal-content">
+        <h4>Configure person</h4>
+
+        <h5>Type</h5>
+        <div id="change-type-parents" class="person-type">
+            <a id="change-type-woman" href="#" onclick="changePersonType('woman'); return false;">👩</a>
+            <a id="change-type-man" href="#" onclick="changePersonType('man'); return false;">👨</a>
+        </div>
+        <div id="change-type-children" class="person-type" style="display: none">
+            <a id="change-type-girl" href="#" onclick="changePersonType('girl'); return false;">👧</a>
+            <a id="change-type-boy" href="#" onclick="changePersonType('boy'); return false;">👦</a>
+            <a id="change-type-baby" href="#" onclick="changePersonType('baby'); return false;">👶</a>
+        </div>
+
+        <h5>Skin tone</h5>
+        <div class="skin-container">
+            <a class="emoji skin-tone" href="#" onclick="changeSkinTone(1); return false;">🏻</a>
+            <a class="emoji skin-tone" href="#" onclick="changeSkinTone(2); return false;">🏼</a>
+            <a class="emoji skin-tone" href="#" onclick="changeSkinTone(3); return false;">🏽</a>
+            <a class="emoji skin-tone" href="#" onclick="changeSkinTone(4); return false;">🏾</a>
+            <a class="emoji skin-tone" href="#" onclick="changeSkinTone(5); return false;">🏿</a>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="modal-action modal-close waves-effect waves-red btn-flat" onclick="return false;">Cancel</a>
+        <a href="#" class="modal-action modal-close waves-effect waves-red btn-flat remove-person" onclick="removePerson(); return false;">Remove person</a>
+    </div>
+</div>
+
+
+
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
